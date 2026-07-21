@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block cabecalho %}Capturar etiqueta{% endblock %}
+{% block conteudo %}
+<div class="cartao">
+  <p class="nota" id="instrucao">Fotografe a etiqueta ou o carimbo da caixa. Código, produto, lote, quantidade e validade serão lidos automaticamente.</p>
+  <input type="file" id="foto" accept="image/*" capture="environment" hidden>
+  <img id="previa" class="previa" hidden alt="Foto da etiqueta">
+  <button class="btn-primario" id="btn-foto" type="button">Fotografar etiqueta</button>
+  <button class="btn-sec" id="btn-ler" type="button" hidden>Ler etiqueta</button>
+  <div class="erro" id="erro" hidden></div>
+</div>
+
+<form class="cartao form" id="form-lote" hidden>
+  <div class="linha-chip">
+    <span class="rotulo">Conferir leitura</span>
+    <span class="chip" id="chip-categoria" hidden></span>
+    <span class="chip chip-alerta" id="chip-fora" hidden>Fora do cadastro — confira o nome</span>
+  </div>
+  <label>Produto
+    <input name="descricao" id="f-descricao" list="lista-produtos" required>
+    <datalist id="lista-produtos"></datalist>
+  </label>
+  <label>Código do item
+    <input name="codigo" id="f-codigo" inputmode="numeric">
+  </label>
+  <div class="grade-2">
+    <label>Lote <input name="lote" id="f-lote"></label>
+    <label>Quantidade (UN) <input name="quantidade" id="f-quantidade" inputmode="numeric"></label>
+  </div>
+  <label>Validade (DD/MM/AAAA)
+    <input name="validade" id="f-validade" placeholder="13/10/2026" inputmode="numeric">
+  </label>
+  <span class="chip" id="chip-dias" hidden></span>
+  <button class="btn-primario" type="submit">Salvar no estoque da loja</button>
+</form>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='app.js') }}"></script>{% endblock %}

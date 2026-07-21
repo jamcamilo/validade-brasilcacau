@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block cabecalho %}Alertas da loja{% endblock %}
+{% block conteudo %}
+<form method="post" class="cartao form">
+  <label>Avisar quantos dias antes do vencimento (separe por vírgula)
+    <input name="dias_alerta" value="{{ loja.dias_alerta }}" placeholder="60,30,15,7">
+  </label>
+  <label>E-mails para alerta (separe por vírgula)
+    <input name="emails_alerta" value="{{ loja.emails_alerta }}" inputmode="email"
+           placeholder="gerente@loja.com, encarregado@loja.com">
+  </label>
+  <label>WhatsApp (com DDI, ex.: +5544999998888)
+    <input name="whatsapp_numero" value="{{ loja.whatsapp_numero }}" inputmode="tel">
+  </label>
+  <label>API key do CallMeBot
+    <input name="whatsapp_apikey" value="{{ loja.whatsapp_apikey }}">
+  </label>
+  <p class="nota">Para receber pelo WhatsApp, o número precisa autorizar o CallMeBot uma única vez
+  (instruções em callmebot.com). Os alertas saem uma vez ao dia e cada item é avisado
+  uma única vez por faixa de dias — itens zerados nunca são avisados.</p>
+  <button class="btn-primario" type="submit">Salvar configurações</button>
+</form>
+{% endblock %}

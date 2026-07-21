@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block cabecalho %}Administração{% endblock %}
+{% block conteudo %}
+<form method="post" class="cartao form">
+  <label>Senha do administrador
+    <input type="password" name="senha" required>
+  </label>
+  <button class="btn-primario" type="submit">Entrar</button>
+</form>
+{% endblock %}

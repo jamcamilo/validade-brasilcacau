@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#3b2113">
+  <title>{% block titulo %}Validade na Loja{% endblock %} · Brasil Cacau</title>
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='icone-192.png') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topo">
+    <div class="marca">Brasil Cacau · Controle de Validade</div>
+    <h1>{% block cabecalho %}Validade na Loja{% endblock %}</h1>
+    {% if usuario %}
+      <div class="loja-tag">{{ usuario.loja.nome }} · <a href="{{ url_for('logout') }}">sair</a></div>
+    {% endif %}
+  </header>
+
+  {% with mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+      <div class="flash">{% for m in mensagens %}<div>{{ m }}</div>{% endfor %}</div>
+    {% endif %}
+  {% endwith %}
+
+  <main class="conteudo">
+    {% block conteudo %}{% endblock %}
+  </main>
+
+  {% if usuario %}
+  <nav class="nav-inferior">
+    <a href="{{ url_for('capturar') }}" class="{{ 'ativo' if request.endpoint == 'capturar' }}">📷<span>Capturar</span></a>
+    <a href="{{ url_for('estoque') }}" class="{{ 'ativo' if request.endpoint == 'estoque' }}">📋<span>Estoque</span></a>
+    <a href="{{ url_for('config') }}" class="{{ 'ativo' if request.endpoint == 'config' }}">⚙️<span>Alertas</span></a>
+  </nav>
+  {% endif %}
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('{{ url_for("static", filename="sw.js") }}');
+    }
+  </script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

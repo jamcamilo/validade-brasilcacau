@@ -1,0 +1,197 @@
+:root {
+  --cacau-escuro: #3b2113;
+  --cacau: #5a3218;
+  --caramelo: #c99a5b;
+  --creme: #f3e3c8;
+  --fundo: #f7f3ec;
+  --papel: #ffffff;
+  --texto: #3b2a1a;
+  --texto-suave: #6d5a46;
+  --borda: #ddd0c0;
+  --vermelho: #a33327;
+  --laranja: #c25e1f;
+  --amarelo-fundo: #f2d98c;
+  --amarelo-texto: #4a3418;
+  --verde-fundo: #dcead6;
+  --verde-texto: #2e5230;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: 'Avenir Next', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  max-width: 520px;
+  margin-inline: auto;
+  min-height: 100vh;
+  padding-bottom: 76px; /* espaço da nav inferior */
+}
+.topo {
+  background: var(--cacau-escuro);
+  color: var(--creme);
+  padding: 16px 18px 12px;
+}
+.marca {
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--caramelo);
+  font-weight: 600;
+}
+.topo h1 { font-size: 21px; margin: 2px 0 4px; }
+.loja-tag { font-size: 13px; opacity: .85; }
+.loja-tag a { color: var(--caramelo); }
+
+.conteudo { padding: 14px; }
+.cartao {
+  background: var(--papel);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(59,33,19,.10);
+  margin-bottom: 14px;
+}
+.flash { padding: 10px 14px 0; }
+.flash div {
+  background: var(--creme);
+  border: 1px solid var(--caramelo);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.nota { font-size: 13px; color: var(--texto-suave); margin-top: 0; }
+.erro { color: var(--vermelho); font-size: 14px; margin-top: 10px; }
+.vazio { text-align: center; color: var(--texto-suave); }
+
+.form label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #8a7460;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.form input, .form select {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  border: 1.5px solid var(--borda);
+  border-radius: 9px;
+  padding: 11px 12px;
+  font-size: 16px; /* evita zoom do iOS */
+  background: #fdfbf7;
+  color: var(--texto);
+}
+.grade-2 { display: flex; gap: 10px; }
+.grade-2 label { flex: 1; }
+
+.btn-primario, .btn-sec {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 14px 0;
+  margin-top: 8px;
+}
+.btn-primario {
+  background: var(--cacau);
+  color: var(--creme);
+  border: none;
+}
+.btn-primario:disabled { opacity: .6; }
+.btn-sec {
+  background: transparent;
+  color: var(--cacau);
+  border: 1.5px solid var(--borda);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 0;
+}
+.btn-sec.perigo { color: var(--vermelho); border-color: var(--vermelho); }
+
+.previa {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  background: #efe9df;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.linha-chip { margin-bottom: 12px; }
+.rotulo {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #8a7460;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.chip {
+  display: inline-block;
+  background: #f0ede6;
+  color: #8a8378;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.chip-vencido { background: var(--vermelho); color: #fff; }
+.chip-critico { background: var(--laranja); color: #fff; }
+.chip-atencao { background: var(--amarelo-fundo); color: var(--amarelo-texto); }
+.chip-ok { background: var(--verde-fundo); color: var(--verde-texto); }
+.chip-alerta { background: #f5dede; color: var(--vermelho); }
+#chip-categoria { background: #efe4d2; color: #7a5a2e; }
+
+.filtros { display: flex; gap: 8px; margin-bottom: 14px; }
+.pilula {
+  flex: 1;
+  text-align: center;
+  border-radius: 999px;
+  border: 1.5px solid #d8cbba;
+  background: var(--papel);
+  color: var(--texto-suave);
+  padding: 8px 0;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.pilula.ativa { background: var(--cacau); color: var(--creme); border-color: var(--cacau); }
+
+.lote.zerado { opacity: .55; }
+.lote-topo { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.lote-nome { font-weight: 700; font-size: 15px; }
+.lote-cat { font-size: 12px; color: #8a7460; }
+.lote-meta {
+  font-size: 13px;
+  color: var(--texto-suave);
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+}
+
+.nav-inferior {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  max-width: 520px;
+  margin-inline: auto;
+  display: flex;
+  background: #2c180d;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.nav-inferior a {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0 8px;
+  color: #9d7f5f;
+  text-decoration: none;
+  font-size: 18px;
+  border-top: 3px solid transparent;
+}
+.nav-inferior a span { display: block; font-size: 11px; font-weight: 700; }
+.nav-inferior a.ativo { color: var(--creme); border-top-color: var(--caramelo); }

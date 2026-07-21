@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block cabecalho %}Entrar{% endblock %}
+{% block conteudo %}
+<form method="post" class="cartao form">
+  <label>E-mail
+    <input type="email" name="email" required autocomplete="username" inputmode="email">
+  </label>
+  <label>Senha
+    <input type="password" name="senha" required autocomplete="current-password">
+  </label>
+  <button class="btn-primario" type="submit">Entrar</button>
+</form>
+<p class="nota">Acesso criado pelo administrador do sistema. Cada usuário pertence a uma loja e enxerga apenas os dados dela.</p>
+{% endblock %}

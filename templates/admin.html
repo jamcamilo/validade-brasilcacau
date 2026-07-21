@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block cabecalho %}Administração{% endblock %}
+{% block conteudo %}
+<form method="post" class="cartao form">
+  <span class="rotulo">Nova loja</span>
+  <input type="hidden" name="acao" value="nova_loja">
+  <label>Nome da loja <input name="nome" required placeholder="Brasil Cacau — Campo Mourão"></label>
+  <button class="btn-primario" type="submit">Criar loja</button>
+</form>
+
+<form method="post" class="cartao form">
+  <span class="rotulo">Novo usuário</span>
+  <input type="hidden" name="acao" value="novo_usuario">
+  <label>Loja
+    <select name="loja_id" required>
+      {% for l in lojas %}<option value="{{ l.id }}">{{ l.nome }}{{ '' if l.ativa else ' (inativa)' }}</option>{% endfor %}
+    </select>
+  </label>
+  <label>Nome <input name="nome"></label>
+  <label>E-mail <input type="email" name="email" required></label>
+  <label>Senha <input type="text" name="senha" required></label>
+  <button class="btn-primario" type="submit">Criar usuário</button>
+</form>
+
+<div class="cartao">
+  <span class="rotulo">Lojas cadastradas</span>
+  {% for l in lojas %}
+    <div class="lote-topo" style="margin-top:10px">
+      <div>
+        <div class="lote-nome">{{ l.nome }}</div>
+        <div class="lote-cat">{{ l.usuarios|length }} usuário(s) · {{ l.lotes|length }} lote(s)</div>
+      </div>
+      <form method="post" style="margin:0">
+        <input type="hidden" name="acao" value="alternar_loja">
+        <input type="hidden" name="loja_id" value="{{ l.id }}">
+        <button class="btn-sec" type="submit">{{ 'Desativar' if l.ativa else 'Reativar' }}</button>
+      </form>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
