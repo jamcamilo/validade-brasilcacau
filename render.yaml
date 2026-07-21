@@ -30,17 +30,6 @@ services:
       - key: EMAIL_FROM
         sync: false
 
-  - type: cron
-    name: validade-alertas
-    runtime: python
-    plan: free
-    schedule: "0 11 * * *"   # 11:00 UTC = 08:00 em Brasília
-    buildCommand: pip install -r requirements.txt
-    startCommand: python -c "import os,requests; r=requests.get(os.environ['URL_ALERTAS'], timeout=300); print(r.status_code, r.text[:500])"
-    envVars:
-      - key: URL_ALERTAS
-        sync: false        # ex.: https://validade-brasilcacau.onrender.com/tasks/enviar-alertas?token=SEU_CRON_TOKEN
-
 databases:
   - name: validade-db
     plan: free
